@@ -1,0 +1,69 @@
+/* Importar Bootstrap */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css');
+
+/* Estilos personalizados */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400; /* Cambiado a 400 para una fuente normal */
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: transparent; /* Cambiado el fondo a blanco */
+}
+
+/* Estilos para el Header */
+header {
+  display: flex;
+  justify-content: space-between; /* Espacio entre el logo y el texto */
+  align-items: center; /* Centra verticalmente el contenido */
+  width: 100vw; /* Ancho al 100% del viewport */
+  height: 30vh; /* Altura fija o ajusta según tus necesidades */
+  margin: 0; /* Elimina los márgenes para que ocupe todo el ancho */
+  padding: 0; /* Elimina el espacio interno */
+  z-index: 2; /* Asegura que esté por encima de la Navbar */
+  background-color: #dbbaba; /* Cambiado el fondo a un tono más sólido */
+}
+
+.logo-container {
+  width: 300px; /* Ancho del contenedor igual al ancho del logo */
+  height: 100px; /* Alto del contenedor igual al alto del logo */
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 300px; /* Ancho del logo */
+  height: 300px; /* Alto del logo */
+}
+
+h1 {
+  max-width: 100% ; /* Calcula el ancho máximo para el texto */
+  font-size: 3.2em;
+  line-height: 1.1;
+  margin-right: 400px !important;
+  margin-top: 80px;
+  margin-bottom: 0px;
+  text-align: center; /* Centra el texto horizontalmente */
+  margin: 0; /* Elimina cualquier margen para el texto */
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  color: #333;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+p {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  color: #333;
+  margin-left: 10px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f5f5 !important; /* Cambia el color de fondo aquí */
+}

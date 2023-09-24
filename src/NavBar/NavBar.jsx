@@ -1,15 +1,12 @@
-/* eslint-disable react/prop-types */
 
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
+import './NavBar.css';
 
 const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
-        <a className="navbar-brand" href="/">
-          <img src="logo_3D.png" width="3" height="3" className="mr-2" /> 3D-Store
-        </a>
         <button
           className="navbar-toggler"
           type="button"
@@ -23,44 +20,25 @@ const NavBar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item active">
-              <a className="nav-link" href="/">
+            <li className="nav-item">
+              <a className="nav-link" href="/home">
                 Home
               </a>
             </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
+            <li className="nav-item">
+              <a className="nav-link" href="/productos">
                 Productos
               </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a className="dropdown-item" href="/categoria1">
-                    Categoría 1
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="/categoria2">
-                    Categoría 2
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="/categoria3">
-                    Categoría 3
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="/categoria4">
-                    Categoría 4
-                  </a>
-                </li>
-              </ul>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/about">
+                About
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/contacto">
+                Contacto
+              </a>
             </li>
           </ul>
         </div>
