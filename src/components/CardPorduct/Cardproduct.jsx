@@ -11,7 +11,7 @@ import { CardActionArea } from '@mui/material';
 
 const Cardproduct = (props) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 300 }}>
         
       <CardMedia
         component="img"
@@ -32,6 +32,7 @@ const Cardproduct = (props) => {
         <Button size="small">Ver Espec.</Button>
       </CardActions>
     </Card>
+    
   );
 }
 

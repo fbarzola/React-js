@@ -1,9 +1,8 @@
-/* Estilos para ItemListContainer */
 
 .ItemListContainer {
     display: flex;
-    margin-right: 2000px !important;
-    flex-direction: column;
+    margin-right: 2px !important;
+    margin-left: 100px !important;
     align-items: center;
     justify-content: center;
     padding: 2rem;

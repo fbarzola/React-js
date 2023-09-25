@@ -22,6 +22,18 @@ function App() {
         discount= "$330.000 10% off"
         img= "./src/impresoras-3d.jpg"              
         />
+        <Cardproduct
+        description= "Impresora 3D Delta Mini"
+        price= "$200.000"
+        discount= "$220.000 10% off"
+        img= "./src/delta.jpg"              
+        />
+        <Cardproduct
+        description= "Impresora 3D Crealty Pro"
+        price= "$500.000"
+        discount= "$550.000 10% off"
+        img= "./src/creatly2.jpg"              
+        />
     </div>
     </div>
   );

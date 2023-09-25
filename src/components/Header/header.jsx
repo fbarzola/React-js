@@ -11,7 +11,7 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   typography: {
     poster: {
-      fontSize: 60,
+      fontSize: 55,
       color:'black',
     },
   },
