@@ -1,21 +1,21 @@
 /* Estilos para la Navbar */
 .navbar {
     width: 100%;
-    position: fixed;
-    margin-top: 170px;
+    position:static;
+    margin-top: 0px;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1;
     margin-left: 0;
     margin-right: 0;
-    background-color: #dd6c6c !important; /* Cambia el color de fondo aquí */
+    background-color: #dd6c6c !important; 
   }
   
   
   /* Estilos para los enlaces de navegación */
   .navbar-nav {
-    margin-left: 800px;
+    margin-left: 760px;
   }
   
   .nav-item {

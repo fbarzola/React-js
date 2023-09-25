@@ -2,6 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import './NavBar.css';
+import CardWidget from '../components/CartWidget/CardWidget';
 
 const NavBar = () => {
   return (
@@ -40,7 +41,12 @@ const NavBar = () => {
                 Contacto
               </a>
             </li>
-          </ul>
+            <li className="nav-item">
+              <a className="nav-link" href="/contacto">
+              <CardWidget/>
+              </a>
+            </li><a>1</a>
+           </ul>
         </div>
       </div>
     </nav>

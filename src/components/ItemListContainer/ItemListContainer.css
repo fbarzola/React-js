@@ -1,0 +1,16 @@
+/* Estilos para ItemListContainer */
+
+.ItemListContainer {
+    display: flex;
+    margin-right: 2000px !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #da6161 !important; /* Cambiar el fondo a blanco o el color deseado */
+    margin-bottom: 200px;
+    color: #333; /* Cambia el color del texto según tu preferencia */
+    font-family: 'Arial', sans-serif; /* Cambia la fuente según tu preferencia */
+    font-size: 1.5rem; /* Ajusta el tamaño de fuente según tu preferencia */
+  }
+  
