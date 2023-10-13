@@ -1,27 +1,20 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
-//import './ItemListContainer.css';
-import { Padding } from '@mui/icons-material';
+import React from 'react';
+import "./ItemListContainer.css";
+import { useEffect, useState } from 'react';
+import CardProduct from '../CardPorduct/CardProduct';
+import products from './ItemList.json';
 
 const ItemListContainer = () => {
   return (
-    
-    <div
-
-      style={{ backgroundColor: "aliceblue",
-      padding: "1px",
-      width: "100%",
-      height: "30px",
-      display: "flex",
-      justifyContent: "flex-start", 
-      alignItems: "center",
-      fontSize: "5px", 
-      margin: "0",
-      }}
-      ><h1>Listado de Productos/Impresoras3D</h1>
-      
+    <div className='Card-List'>
+      {products.map((product) => (
+        <div key={product.id}>
+          <CardProduct product={product} />
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default ItemListContainer
+export default ItemListContainer;

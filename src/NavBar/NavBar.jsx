@@ -1,10 +1,27 @@
+/* eslint-disable no-undef */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 
-// eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useState } from 'react';
 import './NavBar.css';
 import CardWidget from '../components/CartWidget/CardWidget';
+import { Link } from 'react-router-dom'; 
 
-const NavBar = () => {
+const NavBar = ({ onCategoryChange }) => {
+  const [isDropdownOpen, setDropdownOpen] = useState(false); // Agrega el estado isDropdownOpen
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  const categories = ["Impresoras 3D", "Impresiones 3D", "Repuestos e Insumos"];
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    onCategoryChange(category);
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
@@ -22,31 +39,47 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="/home">
+              <Link to="/" className="nav-link">
                 Home
-              </a>
+              </Link>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/productos">
+            <li className={`nav-item dropdown ${isDropdownOpen ? 'show' : ''}`}>
+              <button
+                className="nav-link dropdown-toggle"
+                onClick={toggleDropdown}
+                id="navbarDropdown"
+                role="button"
+              >
                 Productos
-              </a>
+              </button>
+              <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
+                {categories.map((category, index) => (
+                  <li
+                    key={index}
+                    className="dropdown-item"
+                    onClick={() => handleCategoryChange(category)}
+                  >
+                    {category}
+                  </li>
+                ))}
+              </div>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/about">
+              <Link to="/about" className="nav-link">
                 About
-              </a>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/contact" className="nav-link">
+                Contacto
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/contacto">
-                Contacto
+                <CardWidget />
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/contacto"> 
-              <CardWidget/>
-              </a>
-            </li>
-           </ul>
+          </ul>
         </div>
       </div>
     </nav>
