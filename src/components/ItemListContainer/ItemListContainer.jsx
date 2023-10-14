@@ -11,11 +11,10 @@ const ItemListContainer = ({ selectedCategory }) => {
 
   useEffect(() => {
     if (selectedCategory) {
-      // Filtra los productos según la categoría seleccionada
       const filtered = products.filter(product => product.Category === selectedCategory);
       setFilteredProducts(filtered);
     } else {
-      // Si no se selecciona ninguna categoría, muestra todos los productos
+      
       setFilteredProducts(products);
     }
   }, [selectedCategory]);

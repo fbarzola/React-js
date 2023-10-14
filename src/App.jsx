@@ -8,8 +8,6 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import { private_createTypography } from '@mui/material';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-
-
 // PAGES
 import Home from "./Pages/Home";
 import About from "./Pages/About";
