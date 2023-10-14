@@ -20,20 +20,21 @@ import Producto from './Pages/Producto';
 const App = () => {
   return (
     <Router>
-    <div className="App">
-      <Header />
-      <NavBar />
-      <Routes>
+      <div className="App">
+        <Header />
+        <NavBar />
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/producto" element={<Producto />} />
+          <Route path="/producto/:category" element={<Producto />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-    </div>
+      </div>
     </Router>
   );
 }
+
 
 export default App;
 

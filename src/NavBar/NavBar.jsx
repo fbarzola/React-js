@@ -1,25 +1,15 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-
 import React, { useState } from 'react';
 import './NavBar.css';
 import CardWidget from '../components/CartWidget/CardWidget';
 import { Link } from 'react-router-dom'; 
 
-const NavBar = ({ onCategoryChange }) => {
-  const [isDropdownOpen, setDropdownOpen] = useState(false); // Agrega el estado isDropdownOpen
-  const [selectedCategory, setSelectedCategory] = useState('');
-
-  const categories = ["Impresoras 3D", "Impresiones 3D", "Repuestos e Insumos"];
+const NavBar = () => {
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const categories = ["Impresoras_3D", "Impresiones_3D", "Repuestos_e_Insumos"];
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
-  };
-
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-    onCategoryChange(category);
   };
 
   return (
@@ -54,13 +44,13 @@ const NavBar = ({ onCategoryChange }) => {
               </button>
               <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
                 {categories.map((category, index) => (
-                  <li
+                  <Link
                     key={index}
+                    to={`/producto/${category}`}
                     className="dropdown-item"
-                    onClick={() => handleCategoryChange(category)}
                   >
                     {category}
-                  </li>
+                  </Link>
                 ))}
               </div>
             </li>
