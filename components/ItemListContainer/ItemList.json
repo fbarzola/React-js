@@ -1,0 +1,76 @@
+[   
+   {
+      "Title": "Impresora 3D Endler PRO",
+      "id": 1,
+      "image": "../src/components/ItemListContainer/impresoras-3d.jpg",
+      "price": "$200.000",
+      "Category": "Impresora"
+
+
+    },    
+    {
+      "Title": "Impresora 3D Crealty",
+      "id": 2,
+      "image": "../src/components/ItemListContainer/crealty.jpg",
+      "price": "$300.000",
+      "Category": "Impresora"
+
+    },
+    {
+      "Title": "Impresora 3D Delta PRO",
+      "id": 3,
+      "image": "../src/components/ItemListContainer/delta.jpg",
+      "price": "$500.000",
+      "Category": "Impresora"
+
+    },
+    {
+      "Title": "Filamentos 3D de todos los colores",
+      "id": 4,
+      "image": "../src/imgproductos/filamentos/filamentos.jpeg",
+      "price": "$10.000",
+      "Category": "repuesto"
+
+    },
+    {
+      "Title": "Impresion 3D Baby Yoda",
+      "id": 5,
+      "image": "../src/imgproductos/impresiones 3D/babyyoda.jpg",
+      "price": "$2.000",
+      "Category": "impresion"
+
+    },
+    {
+      "Title": "Impresion 3D dragonite",
+      "id": 6,
+      "image": "../src/imgproductos/impresiones 3D/dragonite.jpg",
+      "price": "$2.000",
+      "Category": "impresion"
+
+    },
+    {
+      "Title": "Impresion 3D Mandalorian",
+      "id": 7,
+      "image": "../src/imgproductos/impresiones 3D/mandalorian.jpg",
+      "price": "$2.500",
+      "Category": "impresion"
+
+    },
+    {
+      "Title": "Respuestos Boquillas",
+      "id": 8,
+      "image": "../src/imgproductos/Repuestos/boquillas.jpg",
+      "price": "$2.500",
+      "Category": "repuesto"
+
+    },
+    {
+      "Title": "Respuestos",
+      "id": 9,
+      "image": "../src/imgproductos/Repuestos/anda.jpg",
+      "price": "$2.500",
+      "Category": "repuesto" 
+
+    }
+
+]
