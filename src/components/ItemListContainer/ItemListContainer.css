@@ -1,7 +1,6 @@
 .Card-List {
   background: transparent;
   padding: 20px 0; 
-  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
   gap: 10px;
@@ -9,19 +8,24 @@
   align-items: stretch; 
   margin: 0 auto; 
   max-width: 1200px; 
+  bottom: 0px !important;
 }
 
 .Card {
+  
   max-width: 300px; 
   display: flex;
   flex-direction: column;
   height: 100%; 
+  bottom: 0px !important;
+
 }
 
 
 .Card img {
   max-width: 100%;
   height: auto; 
+  background-color: transparent;
 }
 
 
@@ -29,11 +33,17 @@
   font-size: 18px;
   font-weight: bold;
   color: #333;
-  margin: 8px 0;
+  margin: 8px;
 }
 
 
 .Card .price {
   font-size: 16px;
   color: #777;
+}
+
+.Spinner {
+	display: flex;
+	justify-content: center;
+	margin: 40px;
 }

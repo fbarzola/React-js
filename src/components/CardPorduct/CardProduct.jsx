@@ -10,8 +10,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
+import NavBar from '../../NavBar/NavBar';
 
-const CardProduct = ({product}) => {
+const CardProduct = ({ product }) => {
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -19,7 +20,7 @@ const CardProduct = ({product}) => {
         <CardMedia 
           component="img"
           image={product.image}
-          alt="Impresora 3D" />
+          alt="3D" />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
           {product.Title}
@@ -28,11 +29,25 @@ const CardProduct = ({product}) => {
           {product.price}
           </Typography>
         </CardContent>
-        <Button size="small">Comprar</Button>
-        <Button size="small" component={Link} to={`/details/${product.id}`}>Ver detalle</Button>
+        <Button
+            variant="contained"
+            size="large"
+            component={Link} to={`/details/${product.id}`}
+            style={{
+              display: 'block',
+              fontSize:'large',
+              margin: '0 auto',
+              marginTop: '40px',
+              textAlign: 'center',
+              backgroundColor: 'lightcoral' 
+            }}
+          >
+          VER PRODUCTO
+        </Button>
       </CardActionArea>
     </Card>
   );
 };
 
 export default CardProduct;
+

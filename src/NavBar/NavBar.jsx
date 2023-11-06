@@ -2,14 +2,27 @@
 import React, { useState } from 'react';
 import './NavBar.css';
 import CardWidget from '../components/CartWidget/CardWidget';
-import { Link } from 'react-router-dom'; 
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const NavBar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const categories = ["Impresoras_3D", "Impresiones_3D", "Repuestos_e_Insumos"];
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [cartCount, setCartCount] = useState(0);
+
+  const handleIncrement = () => {
+    setCartCount(cartCount + 1);
+  };
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleCategoryClick = () => {
+    
+    setDropdownOpen(false);
   };
 
   return (
@@ -30,7 +43,7 @@ const NavBar = () => {
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link to="/" className="nav-link">
-                Home
+                Inicio
               </Link>
             </li>
             <li className={`nav-item dropdown ${isDropdownOpen ? 'show' : ''}`}>
@@ -42,12 +55,14 @@ const NavBar = () => {
               >
                 Productos
               </button>
-              <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
+              <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`} >
                 {categories.map((category, index) => (
                   <Link
                     key={index}
                     to={`/producto/${category}`}
-                    className="dropdown-item"
+                    onClick={handleCategoryClick} 
+                    className={`dropdown-item ${location.pathname === `/producto/${category}` ? 'active' : ''}`}
+                                        
                   >
                     {category}
                   </Link>
@@ -56,7 +71,7 @@ const NavBar = () => {
             </li>
             <li className="nav-item">
               <Link to="/about" className="nav-link">
-                About
+                Nosotros
               </Link>
             </li>
             <li className="nav-item">
@@ -66,7 +81,7 @@ const NavBar = () => {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/contacto">
-                <CardWidget />
+                <CardWidget cartCount={cartCount} />
               </a>
             </li>
           </ul>
@@ -77,3 +92,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+

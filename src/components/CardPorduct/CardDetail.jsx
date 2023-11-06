@@ -6,28 +6,24 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import product from '../../Pages/Details';
 
 const CardDetail = ({product}) => {
 
-  if (!product) {
-    return <div>No se encontró el producto</div>;
-  }
+
+if (!product) {
+  return <div>Cargando...</div>; 
+}
     return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 350, marginLeft: 4, marginRight:1, marginTop: 1, backgroundColor:'none',   border:'none' }}>
       <CardActionArea>
         <CardMedia
            component="img"
            image={product.image}
-           alt="Impresora 3D" 
+           alt="3D" 
+          
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-          {product.Title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-          {product.description}
-          </Typography>
-        </CardContent>
+        
       </CardActionArea>
     </Card>
   );
