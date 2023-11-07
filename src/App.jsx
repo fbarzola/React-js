@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import Header from './components/Header/header';
 import NavBar from './NavBar/NavBar';
+import PaperShop from './components/Paper/PaperShop';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import { private_createTypography } from '@mui/material';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -24,6 +25,7 @@ import Register from './Pages/Register';
 
 const App = () => {
   const [cart, setCart, ] = useState([]);
+  
 
   const addToCart = (item) => {
     setCart([...cart, item]);
@@ -36,11 +38,14 @@ const App = () => {
     setCart(updatedCart);
   };
 
+  const cartTotal = cart.reduce((total, item) => total + item.quantity, 0);
+
+
   return (
     <Router>
       <div className="App">
         <Header />
-        <NavBar />
+        <NavBar cartCount={cartTotal} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

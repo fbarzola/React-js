@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { TextField, Button, Typography, Container } from "@mui/material";
+import { TextField, Button, Typography, Container, Alert } from "@mui/material";
 import { db } from "../firebase/firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
 
@@ -33,6 +33,9 @@ const Register = () => {
     contrasena: "",
     usuario:"",
   });
+
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
+  const [registrationError, setRegistrationError] = useState(false);
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;
@@ -105,8 +108,6 @@ const Register = () => {
         usuario: formData.usuario,
       });
 
-      console.log("Documento creado con ID: ", docRef.id);
-
       setFormData({
         nombre: "",
         apellido: "",
@@ -118,8 +119,16 @@ const Register = () => {
         contrasena: "",
         usuario:"",
       });
+      setRegistrationSuccess(true);
+      setTimeout(() => {
+        setRegistrationSuccess(false);
+      }, 2000);
+      
     } catch (error) {
-      console.error("Error al agregar documento: ", error);
+      setRegistrationError(true);
+      setTimeout(() => {
+        setRegistrationError(false);
+      }, 2000);
     }
   };
 
@@ -232,7 +241,20 @@ const Register = () => {
             error={!!validationErrors.contrasena}
             helperText={validationErrors.contrasena}
           />
-          
+          {registrationSuccess && (
+          <Alert 
+          style={{
+            marginTop:'20px',
+          }}
+          severity="success">Registro exitoso</Alert>
+          )}
+          {registrationError && (
+          <Alert 
+          style={{
+            marginTop:'20px',
+          }}
+          severity="success">Error en el registro</Alert>
+          )}
           <Button
             onClick={handleSubmit}
             style={{ marginTop: 20, backgroundColor: "lightcoral" }}

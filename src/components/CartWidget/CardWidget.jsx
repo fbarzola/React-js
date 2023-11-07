@@ -4,17 +4,17 @@ import React from 'react';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Link } from 'react-router-dom';
 
-const CardWidget = ({ cartCount, handleIncrement }) => {
+const CardWidget = ({ cartCount }) => {
   return (
-    <div>
-      <Link to='/shop' onClick={handleIncrement}>
-        <AddShoppingCartIcon
-        style={{
-          textDecoration: 'none',
-        }}
-        />
-        {cartCount > 0 && <span>{cartCount}</span>}
+    <div style={{
+      display: 'flex',
+      marginLeft:'0',
+    }}>
+      <Link to='/shop' >
+        <AddShoppingCartIcon/>
+        
       </Link>
+      <span className="cart-count">{cartCount}</span>
     </div>
   );
 };

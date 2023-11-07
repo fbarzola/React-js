@@ -1,21 +1,16 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import './NavBar.css';
 import CardWidget from '../components/CartWidget/CardWidget';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = ({ cartCount, updateCartCount }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const categories = ["Impresoras_3D", "Impresiones_3D", "Repuestos_e_Insumos"];
   const navigate = useNavigate();
   const location = useLocation();
-
-  const [cartCount, setCartCount] = useState(0);
-
-  const handleIncrement = () => {
-    setCartCount(cartCount + 1);
-  };
-
+  
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };

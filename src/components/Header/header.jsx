@@ -55,7 +55,7 @@ const Header = () => {
   const [password, setPassword] = useState(''); 
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
-  const successTimeout = 3000;
+  const successTimeout = 2000;
   const errorTimeout = 2000;
   const [welcomeMessage, setWelcomeMessage] = useState(null);
   const [showAccount, setShowAccount] = useState(true); 
@@ -104,9 +104,8 @@ const Header = () => {
       setTimeout(() => {
         setError(false);
         setIsErrorVisible(false);
-      }, errorTimeout);
-  
-      // Aquí puedes cerrar el formulario después de mostrar el mensaje de error
+      }, errorTimeout)
+      
       setTimeout(() => {
         handleCloseForm();
       }, errorTimeout);
