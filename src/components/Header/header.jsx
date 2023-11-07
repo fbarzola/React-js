@@ -81,29 +81,38 @@ const Header = () => {
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
-    
+  
     const authenticatedUser = await authenticateUser(username, password);
 
+    handleCloseForm();
+ 
     if (authenticatedUser) {
       setUser(authenticatedUser);
-      handleCloseForm();
-      setSuccess(true); 
+      setSuccess(true);
       setError(false);
-      setIsErrorVisible(false); 
+      setIsErrorVisible(false);
       setTimeout(() => {
         setSuccess(false);
+
       }, successTimeout);
-      setWelcomeMessage(`Bienvenido, ${authenticatedUser.displayName}`);    
+  
+      setWelcomeMessage(`Bienvenido, ${username}`);
       setShowAccount(false);
     } else {
       setError(true);
-      setIsErrorVisible(true); 
+      setIsErrorVisible(true);
       setTimeout(() => {
         setError(false);
         setIsErrorVisible(false);
       }, errorTimeout);
+  
+      // Aquí puedes cerrar el formulario después de mostrar el mensaje de error
+      setTimeout(() => {
+        handleCloseForm();
+      }, errorTimeout);
     }
   };
+  
 
   const handleSignOut = () => {
     signOut(auth)
@@ -157,7 +166,7 @@ const Header = () => {
         </div>
         <div style={{ marginTop: -120, marginRight:20 }}>
           {user ? (
-            <Typography variant="body1" style={{ marginTop: '10px' }}>
+            <Typography variant="body1" style={{ marginTop: '35px' , color: 'black', fontWeight: 'bold' }}>
               {welcomeMessage}
             </Typography>
           ) : null}
@@ -231,6 +240,7 @@ const Header = () => {
             <Button
               style={{
                 marginTop: '10px',
+                marginLeft: '-10px',
                 display: 'flex',
                 color: 'lightcoral',
               }}
