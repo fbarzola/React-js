@@ -11,7 +11,7 @@ const CardWidget = ({ cartCount }) => {
       marginLeft:'0',
     }}>
       <Link to='/shop' >
-        <AddShoppingCartIcon/>
+        <AddShoppingCartIcon style={{ color: 'black' }}/>
         
       </Link>
       <span className="cart-count">{cartCount}</span>

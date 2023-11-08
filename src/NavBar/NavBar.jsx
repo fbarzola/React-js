@@ -75,7 +75,7 @@ const NavBar = ({ cartCount, updateCartCount }) => {
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/contacto">
+              <a className="nav-link" to="/contacto">
                 <CardWidget cartCount={cartCount} />
               </a>
             </li>

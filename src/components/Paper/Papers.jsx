@@ -69,27 +69,27 @@ const Papers = ({ product, addToCart, cart }) => {
         marginTop: 80,
         marginLeft: 50,
         color:'lightcoral',
-          borderColor:'lightcoral'
+          borderColor:'lightcoral',
+          textDecorationLine: 'inherit',
 
             }}
-      ><a>Inicio</a></Button>
+      >Inicio</Button>
       </Link>
 
       <Link to='/shop'> 
      <Button 
       variant="contained"
       size="large"
-      
-     
-
       style={{
         display:'flex',
         marginTop:-42,
         marginLeft: 150,
         backgroundColor: 'lightcoral',
+        textDecorationLine: 'inherit',
+
       }}
-      onClick={handleBuy} ><a>Comprar</a></Button>
-</Link>
+      onClick={handleBuy}> Comprar </Button>
+      </Link>
     </div>
   );
 };

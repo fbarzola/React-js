@@ -21,7 +21,6 @@
   font-weight: bold;
   color: #333;
   text-decoration: none;
-  transition: color 0.3s;
 }
 
 .nav-link:hover {
