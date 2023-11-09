@@ -5,7 +5,6 @@ import { Paper, Typography, List, ListItem, ListItemText, ListItemAvatar, Avatar
 import DeleteIcon from '@mui/icons-material/Delete'; 
 
 const PaperShop = ({ cart, removeFromCart, updateCartCount }) => {
-  
 
   return (
     <Paper elevation={3} style={{ padding: 20, marginLeft: 50, marginRight: 100, marginTop: 50, marginBottom: 50 }}>
@@ -46,6 +45,8 @@ const PaperShop = ({ cart, removeFromCart, updateCartCount }) => {
                     component="span" variant="body2" color="textPrimary">
                     Cantidad: {item.quantity}
                   </Typography>
+                  
+                  
                   <Typography
                     style={{
                       display: 'flex',
@@ -53,7 +54,7 @@ const PaperShop = ({ cart, removeFromCart, updateCartCount }) => {
                       marginTop: -40,
                     }}
                     component="span" variant="body2" color="textSecondary">
-                    Precio Total: ${item.product.price * item.quantity}
+                    Precio Total: ${(parseFloat(item.product.price) * parseInt(item.quantity)).toString()}               
                   </Typography>
                   <IconButton
                     style={{
@@ -72,12 +73,17 @@ const PaperShop = ({ cart, removeFromCart, updateCartCount }) => {
                   </IconButton>
                 </>
               }
+              
             />
           </ListItem>
+          
         ))}
       </List>
     </Paper>
+    
   );
+  
 };
+
 
 export default PaperShop;

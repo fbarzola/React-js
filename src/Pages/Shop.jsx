@@ -17,11 +17,11 @@ const Shop = ({ cart, removeFromCart }) => {
       <Button 
       style={{
         display: 'block',
-              fontSize:'large',
-              marginTop: '40px',
-              textAlign: 'center',
-              color:'lightcoral',
-            borderColor:'lightcoral' 
+        fontSize:'large',
+        marginTop: '40px',
+        textAlign: 'center',
+        color:'lightcoral',
+        borderColor:'lightcoral' 
       }}
       variant='outlined' onClick={() => navigate("/")}>
         Seguir Comprando
@@ -30,11 +30,11 @@ const Shop = ({ cart, removeFromCart }) => {
       <Button 
       style={{
         display: 'block',
-              fontSize:'large',
-              marginLeft: '2px',
-              marginTop: '10px',
-              textAlign: 'center',
-              backgroundColor: 'lightcoral' 
+        fontSize:'large',
+        marginLeft: '2px',
+        marginTop: '10px',
+        textAlign: 'center',
+        backgroundColor: 'lightcoral' 
       }}
       variant='contained' onClick={() => navigate("/Register")}>
         Finalizar Compra!

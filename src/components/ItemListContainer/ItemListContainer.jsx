@@ -13,10 +13,9 @@ const ItemListContainer = ({ selectedCategory }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Función para manejar la compra de un producto y aumentar el contador
+  
   const handleBuyClick = () => {
-    // Realiza cualquier lógica adicional que necesites al hacer clic en "Comprar"
-    // Luego, aumenta el contador en NavBar llamando a la función que pasaste
+    
     incrementCartCount();
   };
 

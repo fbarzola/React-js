@@ -43,7 +43,7 @@ const Papers = ({ product, addToCart, cart }) => {
   return (
     <div className='pap'>
       <h2>{product.Title}</h2>
-      <h4>Precio: {product.price}</h4>
+      <h4>Precio: ${product.price}</h4>
       <p>Opciones de Pago</p>
       <a>3 Cuotas sin interés de $6.600</a>
       <h1></h1>

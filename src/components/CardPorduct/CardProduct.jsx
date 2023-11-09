@@ -11,6 +11,9 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
 import NavBar from '../../NavBar/NavBar';
+import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
+import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
+
 
 const CardProduct = ({ product }) => {
 
@@ -25,9 +28,14 @@ const CardProduct = ({ product }) => {
           <Typography gutterBottom variant="h5" component="div">
           {product.Title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-          {product.price}
+          <Typography variant="h6" marginTop={2} color="text.secondary">
+          Precio: ${product.price}
           </Typography>
+          <h1></h1>
+          <a><CreditCardOutlinedIcon /></a>
+          <a> + </a>
+          <a><LocalShippingOutlinedIcon /></a>
+          <h6>Envio gratis y cuotas sin interes</h6>
         </CardContent>
         <Button
             variant="contained"
@@ -37,7 +45,7 @@ const CardProduct = ({ product }) => {
               display: 'block',
               fontSize:'large',
               margin: '0 auto',
-              marginTop: '40px',
+              marginTop: '1px',
               textAlign: 'center',
               backgroundColor: 'lightcoral' 
             }}
