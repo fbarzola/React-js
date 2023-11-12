@@ -7,13 +7,15 @@ import React, { useState, useEffect } from 'react';
 import img from "./Branding/3D_Store.png";
 import './header.css';
 import { IconButton, Popover, Typography, TextField, Button, Alert } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles'; // Agrega ThemeProvider
+import { createTheme, ThemeProvider } from '@mui/material/styles'; 
 import { Link } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router-dom';
 import { db } from "../../firebase/firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { getAuth,  onAuthStateChanged, signOut } from 'firebase/auth';
+import { AuthProvider, useAuth } from '../Header/AuthContext';
+
 
 const theme = createTheme({
   typography: {
@@ -60,6 +62,9 @@ const Header = () => {
   const [welcomeMessage, setWelcomeMessage] = useState(null);
   const [showAccount, setShowAccount] = useState(true); 
   const [isErrorVisible, setIsErrorVisible] = useState(false);
+  const { setIsUserLoggedIn } = useAuth(false);
+
+ 
 
   const navigate = useNavigate();
   const auth = getAuth(); 
@@ -92,7 +97,8 @@ const Header = () => {
       setError(false);
       setIsErrorVisible(false);
       setTimeout(() => {
-        setSuccess(false);
+      setSuccess(false);
+      setIsUserLoggedIn(true);
 
       }, successTimeout);
   
@@ -116,9 +122,11 @@ const Header = () => {
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
+        setIsUserLoggedIn(false);
         setUser(null);
         setWelcomeMessage(null);
         setShowAccount(true);
+        
       })
       .catch((error) => {
         console.error('Error al cerrar sesión: ', error);
@@ -131,12 +139,15 @@ const Header = () => {
         setUser(currentUser);
         setWelcomeMessage(`Bienvenido, ${currentUser.displayName}`);
       } else {
+        setIsUserLoggedIn(false);
         setUser(null);
         setWelcomeMessage(null);
         setShowAccount(true);
       }
     });
   }, [auth]);
+
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -247,6 +258,7 @@ const Header = () => {
             >
               Cerrar sesión
             </Button>
+            
           )}
         </div>
       </header>

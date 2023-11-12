@@ -5,10 +5,23 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 import PaperShop from '../components/Paper/PaperShop'; 
+import { AuthProvider, useAuth } from '../components/Header/AuthContext';
 
-const Shop = ({ cart, removeFromCart }) => { 
+const Shop = ({ cart, removeFromCart }) => {
+    
   const navigate = useNavigate();
+  const { isUserLoggedIn } = useAuth();
 
+  const handleFinalizarCompra = () => {
+    if (isUserLoggedIn) {
+      alert('Hay un usuario ingresado. Puedes proceder con la compra.');
+    } else {
+      navigate('/register');
+    }
+  };
+
+  console.log(isUserLoggedIn)
+  
   return (
     <div style={{ marginTop: 50, marginLeft: 100 }}>
       <h1>Carrito de Compras</h1>
@@ -36,9 +49,10 @@ const Shop = ({ cart, removeFromCart }) => {
         textAlign: 'center',
         backgroundColor: 'lightcoral' 
       }}
-      variant='contained' onClick={() => navigate("/Register")}>
+      variant='contained' onClick={(handleFinalizarCompra) }>
         Finalizar Compra!
       </Button>
+    
       <h1></h1>
       <PaperShop cart={cart} removeFromCart={removeFromCart} /> 
     </div>

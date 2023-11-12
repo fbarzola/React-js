@@ -54,7 +54,7 @@ const PaperShop = ({ cart, removeFromCart, updateCartCount }) => {
                       marginTop: -40,
                     }}
                     component="span" variant="body2" color="textSecondary">
-                    Precio Total: ${(parseFloat(item.product.price) * parseInt(item.quantity)).toString()}               
+                    Precio Total: ${((item.product.price) * (item.quantity))}               
                   </Typography>
                   <IconButton
                     style={{

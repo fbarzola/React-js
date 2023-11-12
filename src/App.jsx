@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 /* eslint-disable no-undef */
 /* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-unused-vars */
@@ -10,7 +11,7 @@ import PaperShop from './components/Paper/PaperShop';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import { private_createTypography } from '@mui/material';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import { AuthProvider, useAuth } from './components/Header/AuthContext';
 
 
 // PAGES
@@ -25,8 +26,9 @@ import Register from './Pages/Register';
 
 const App = () => {
   const [cart, setCart, ] = useState([]);
-  
+  const { isUserLoggedIn, setIsUserLoggedIn } = useAuth(false);
 
+    
   const addToCart = (item) => {
     setCart([...cart, item]);
   };
@@ -40,11 +42,12 @@ const App = () => {
 
   const cartTotal = cart.reduce((total, item) => total + item.quantity, 0);
 
-
   return (
+    <AuthProvider> 
     <Router>
+      
       <div className="App">
-        <Header />
+      <Header  />
         <NavBar cartCount={cartTotal} />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -53,14 +56,15 @@ const App = () => {
           <Route path="/producto/:category" element={<Producto />} />
           <Route path="/details/:productId" element={<Details addToCart={addToCart}  />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/shop" element={<Shop cart={cart} removeFromCart={removeFromCart} />} />
+          <Route path="/shop" element={<Shop cart={cart} removeFromCart={removeFromCart}/>} />          
           <Route path="/register" element={<Register/>} />
         </Routes>
       </div>
+      
     </Router>
+    </AuthProvider>
   );
 }
-
 
 export default App;
 
