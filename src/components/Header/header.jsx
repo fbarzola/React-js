@@ -232,7 +232,7 @@ const Header = () => {
                 color:'lightcoral',
                 borderColor:'lightcoral'
               }}
-               type="submit" variant="outlined" color="primary" onClick={handleRegisterClick} >
+               type="reset" variant="outlined" color="primary" onClick={handleRegisterClick} >
                 Registrarse
               </Button>
             </form>
