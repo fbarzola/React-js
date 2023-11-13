@@ -7,6 +7,7 @@
 import React, { useState } from 'react';
 import Header from './components/Header/header';
 import NavBar from './NavBar/NavBar';
+import Footer from './components/Footer/Footer';
 import PaperShop from './components/Paper/PaperShop';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import { private_createTypography } from '@mui/material';
@@ -59,8 +60,8 @@ const App = () => {
           <Route path="/shop" element={<Shop cart={cart} removeFromCart={removeFromCart}/>} />          
           <Route path="/register" element={<Register/>} />
         </Routes>
+        <Footer/>
       </div>
-      
     </Router>
     </AuthProvider>
   );
