@@ -1,90 +1,86 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import './NavBar.css';
-import CardWidget from '../components/CartWidget/CardWidget';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import InputBase from '@mui/material/InputBase';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import CardWidget from '../components/CartWidget/CardWidget';
+import './NavBar.css';
 
 const NavBar = ({ cartCount, updateCartCount }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const categories = ["Impresoras_3D", "Impresiones_3D", "Repuestos_e_Insumos"];
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
   };
 
   const handleCategoryClick = () => {
-    
     setDropdownOpen(false);
   };
 
+  const handleClick = () => {
+    
+    navigate('/');
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+    <AppBar position="static" className="navbar">
+      <Toolbar className="container" style={{marginTop:'-12px'}}>
+      
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          onClick={handleClick}
         >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link to="/" className="nav-link">
-                Inicio
-              </Link>
-            </li>
-            <li className={`nav-item dropdown ${isDropdownOpen ? 'show' : ''}`}>
-              <button
-                className="nav-link dropdown-toggle"
-                onClick={toggleDropdown}
-                id="navbarDropdown"
-                role="button"
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="h6" component={Link} to="/" className="nav-link">
+          Inicio
+        </Typography>
+        <div className={`nav-item dropdown ${isDropdownOpen ? 'show' : ''}`}>
+          <Typography
+            variant="h6"
+            component="button"
+            onClick={toggleDropdown}
+            className="nav-link"
+          >
+            Productos
+          </Typography>
+          <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
+            {categories.map((category, index) => (
+              <Link
+                key={index}
+                to={`/producto/${category}`}
+                onClick={handleCategoryClick}
+                className={`dropdown-item ${location.pathname === `/producto/${category}` ? 'active' : ''}`}
               >
-                Productos
-              </button>
-              <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`} >
-                {categories.map((category, index) => (
-                  <Link
-                    key={index}
-                    to={`/producto/${category}`}
-                    onClick={handleCategoryClick} 
-                    className={`dropdown-item ${location.pathname === `/producto/${category}` ? 'active' : ''}`}
-                                        
-                  >
-                    {category}
-                  </Link>
-                ))}
-              </div>
-            </li>
-            <li className="nav-item">
-              <Link to="/about" className="nav-link">
-                Nosotros
+                {category}
               </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/contact" className="nav-link">
-                Contacto
-              </Link>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" to="/contacto">
-                <CardWidget cartCount={cartCount} />
-              </a>
-            </li>
-          </ul>
+            ))}
+          </div>
         </div>
-      </div>
-    </nav>
+        <Typography variant="h6" component={Link} to="/about" className="nav-link">
+          Nosotros
+        </Typography>
+        <Typography variant="h6" component={Link} to="/contact" className="nav-link">
+          Contacto
+        </Typography>
+        <div className="nav-item">
+          <CardWidget cartCount={cartCount} />
+        </div>
+        
+      </Toolbar>
+    </AppBar>
   );
 };
 
 export default NavBar;
-

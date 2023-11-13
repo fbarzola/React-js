@@ -4,6 +4,7 @@ const Home = () => {
   return (
     <div>
       <h3></h3>
+      <h1></h1>
       <h1>Catalogo de Productos</h1>
       <h2></h2>
      <ItemListContainer/>

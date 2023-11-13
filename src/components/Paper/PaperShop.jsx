@@ -6,6 +6,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 const PaperShop = ({ cart, removeFromCart, updateCartCount }) => {
 
+  const totalPrice = cart.reduce((total, item) => total + item.product.price * item.quantity, 0);
+
+
   return (
     <Paper elevation={3} style={{ padding: 20, marginLeft: 50, marginRight: 100, marginTop: 50, marginBottom: 50 }}>
       <Typography variant="h6" gutterBottom>
@@ -79,6 +82,10 @@ const PaperShop = ({ cart, removeFromCart, updateCartCount }) => {
           
         ))}
       </List>
+      {/* Mostrar el total de los precios totales */}
+      <Typography variant="h6" gutterBottom style={{ marginTop: 20, marginLeft: 750, fontSize:'25px'}}>
+        Total a Pagar: ${totalPrice}
+      </Typography>
     </Paper>
     
   );
