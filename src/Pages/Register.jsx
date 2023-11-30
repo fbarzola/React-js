@@ -252,7 +252,7 @@ const Register = () => {
             color="primary"
             type="submit"
           >
-            Registrarse
+            Finalizar Compra
           </Button>
       </form>
       <Button
