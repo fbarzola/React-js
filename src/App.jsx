@@ -4,16 +4,15 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 
-import React, { useState } from 'react';
+import React from 'react';
 import Header from './components/Header/header';
 import NavBar from './NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 import PaperShop from './components/Paper/PaperShop';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import { private_createTypography } from '@mui/material';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider, useAuth } from './components/Header/AuthContext';
-
+import { useCart } from './components/Paper/CartContext';
 
 // PAGES
 import Home from "./Pages/Home";
@@ -26,46 +25,40 @@ import Shop from './Pages/Shop';
 import Register from './Pages/Register';
 
 const App = () => {
-  const [cart, setCart, ] = useState([]);
+  const { cart } = useCart();
   const { isUserLoggedIn, setIsUserLoggedIn } = useAuth(false);
 
-    
-  const addToCart = (item) => {
-    setCart([...cart, item]);
-  };
-
   const removeFromCart = (index) => {
-    
-    const updatedCart = [...cart];
-    updatedCart.splice(index, 1);
-    setCart(updatedCart);
+        dispatch({
+      type: 'UPDATE_CART',
+      payload: cart.filter((_, i) => i !== index),
+    });
   };
 
   const cartTotal = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <AuthProvider> 
-    <Router>
-      
-      <div className="App">
-      <Header  />
-        <NavBar cartCount={cartTotal} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/producto/:category" element={<Producto />} />
-          <Route path="/details/:productId" element={<Details addToCart={addToCart}  />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="/shop" element={<Shop cart={cart} removeFromCart={removeFromCart}/>} />          
-          <Route path="/register" element={<Register/>} />
-        </Routes>
-        <Footer/>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div className="App">
+          <Header  />
+          <NavBar cartCount={cartTotal} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/producto/:category" element={<Producto />} />
+            {/* Nota: Puedes pasar removeFromCart directamente a Details en lugar de addToCart */}
+            <Route path="/details/:productId" element={<Details removeFromCart={removeFromCart} />} />
+            <Route path="*" element={<NotFound />} />
+            <Route path="/shop" element={<Shop cart={cart} removeFromCart={removeFromCart} />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+          <Footer/>
+        </div>
+      </Router>
     </AuthProvider>
   );
 }
 
 export default App;
-

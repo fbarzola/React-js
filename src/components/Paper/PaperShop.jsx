@@ -2,12 +2,19 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Paper, Typography, List, ListItem, ListItemText, ListItemAvatar, Avatar, IconButton } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete'; 
+import DeleteIcon from '@mui/icons-material/Delete';
+import { useCart } from './CartContext';
 
-const PaperShop = ({ cart, removeFromCart, updateCartCount }) => {
+const PaperShop = () => {
+  const { cart, dispatch } = useCart();
+
+  const removeFromCart = (index) => {
+    const updatedCart = [...cart];
+    updatedCart.splice(index, 1);
+    dispatch({ type: 'UPDATE_CART', payload: updatedCart });
+  };
 
   const totalPrice = cart.reduce((total, item) => total + item.product.price * item.quantity, 0);
-
 
   return (
     <Paper elevation={3} style={{ padding: 20, marginLeft: 50, marginRight: 100, marginTop: 50, marginBottom: 50 }}>
@@ -25,7 +32,8 @@ const PaperShop = ({ cart, removeFromCart, updateCartCount }) => {
                   width: 100,
                   height: 100,
                 }}
-                alt={item.product.Title} src={item.product.image}
+                alt={item.product.Title}
+                src={item.product.image}
               />
             </ListItemAvatar>
             <ListItemText
@@ -48,8 +56,6 @@ const PaperShop = ({ cart, removeFromCart, updateCartCount }) => {
                     component="span" variant="body2" color="textPrimary">
                     Cantidad: {item.quantity}
                   </Typography>
-                  
-                  
                   <Typography
                     style={{
                       display: 'flex',
@@ -57,7 +63,7 @@ const PaperShop = ({ cart, removeFromCart, updateCartCount }) => {
                       marginTop: -40,
                     }}
                     component="span" variant="body2" color="textSecondary">
-                    Precio Total: ${((item.product.price) * (item.quantity))}               
+                    Precio Total: ${item.product.price * item.quantity}
                   </Typography>
                   <IconButton
                     style={{
@@ -69,28 +75,21 @@ const PaperShop = ({ cart, removeFromCart, updateCartCount }) => {
                     aria-label="delete"
                     onClick={() => {
                       removeFromCart(index);
-                      updateCartCount( item.quantity);
                     }}
                   >
                     <DeleteIcon />
                   </IconButton>
                 </>
               }
-              
             />
           </ListItem>
-          
         ))}
       </List>
-      {/* Mostrar el total de los precios totales */}
-      <Typography variant="h6" gutterBottom style={{ marginTop: 20, marginLeft: 750, fontSize:'25px'}}>
+      <Typography variant="h6" gutterBottom style={{ marginTop: 20, marginLeft: 750, fontSize: '25px' }}>
         Total a Pagar: ${totalPrice}
       </Typography>
     </Paper>
-    
   );
-  
 };
-
 
 export default PaperShop;

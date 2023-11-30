@@ -8,10 +8,12 @@ import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useCart } from './CartContext';
 
-const Papers = ({ product, addToCart, cart }) => {
-  const [count, setCount] = useState(0); 
+const Papers = ({ product }) => {
+  const [count, setCount] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
+  const { cart, dispatch } = useCart();
 
   const incrementCount = () => {
     if (count < product.Stock) {
@@ -33,10 +35,23 @@ const Papers = ({ product, addToCart, cart }) => {
 
   const handleBuy = () => {
     if (count > 0) {
-      addToCart({
-        product: product,
-        quantity: count,
-      });
+      const existingItemIndex = cart.findIndex((item) => item.product.id === product.id);
+
+      if (existingItemIndex !== -1) {
+        const updatedCart = [...cart];
+        updatedCart[existingItemIndex].quantity += count;
+        dispatch({ type: 'UPDATE_CART', payload: updatedCart });
+      } else {
+        dispatch({
+          type: 'ADD_TO_CART',
+          payload: {
+            product: product,
+            quantity: count,
+          },
+        });
+      }
+      
+      dispatch({ type: 'UPDATE_CART_COUNT' });
     }
   };
 

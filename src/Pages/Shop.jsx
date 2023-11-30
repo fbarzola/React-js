@@ -6,21 +6,30 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 import PaperShop from '../components/Paper/PaperShop'; 
 import { AuthProvider, useAuth } from '../components/Header/AuthContext';
+import { CartProvider } from '../components/Paper/CartContext';
+import { useCart } from '../components/Paper/CartContext';
+
 
 const Shop = ({ cart, removeFromCart }) => {
     
   const navigate = useNavigate();
   const { isUserLoggedIn } = useAuth();
+  const { dispatch } = useCart();
 
   const handleFinalizarCompra = () => {
-    if (isUserLoggedIn) {
-      alert('Hay un usuario ingresado. Puedes proceder con la compra.');
-    } else {
-      navigate('/register');
-    }
+    setTimeout(() => {
+      if (isUserLoggedIn) {
+        alert('Compra Exitosa!! Verifique su e-mail, Su numero de order es: 7328490');
+        dispatch({ type: 'UPDATE_CART', payload: [] }); 
+        navigate("/");
+      } else {
+        alert('Primero debes registrarte');
+        navigate('/register');
+      }
+    }, 2000);
   };
 
-  console.log(isUserLoggedIn)
+  
   
   return (
     <div style={{ marginTop: 50, marginLeft: 100 }}>

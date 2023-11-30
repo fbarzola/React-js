@@ -1,4 +1,3 @@
-
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
@@ -6,9 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { TextField, Button, Typography, Container, Alert } from "@mui/material";
 import { db } from "../firebase/firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
+import { useCart } from "../components/Paper/CartContext";
 
 const Register = () => {
   const navigate = useNavigate();
+  const { dispatch } = useCart();
 
   const [formData, setFormData] = useState({
     nombre: "",
@@ -91,7 +92,6 @@ const Register = () => {
     }
 
     try {
-
       const isoDate = formData.birthDate
         ? new Date(formData.birthDate.split("/").reverse().join("-")).toISOString()
         : null;
@@ -119,16 +119,21 @@ const Register = () => {
         contrasena: "",
         usuario:"",
       });
+
+      dispatch({ type: 'UPDATE_CART', payload: [] });
+
       setRegistrationSuccess(true);
       setTimeout(() => {
         setRegistrationSuccess(false);
-      }, 2000);
+        navigate("/");
+
+      }, 6000);
       
     } catch (error) {
       setRegistrationError(true);
       setTimeout(() => {
         setRegistrationError(false);
-      }, 2000);
+      }, 3000);
     }
   };
 
@@ -171,8 +176,7 @@ const Register = () => {
           error={!!validationErrors.usuario}
           helperText={validationErrors.usuario}
         />
-
-         <TextField
+        <TextField
           style={{ marginTop: 20 }}
           label="Fecha de Nacimiento (dd/mm/aaaa)"
           name="birthDate"
@@ -233,7 +237,7 @@ const Register = () => {
             style={{ marginTop: 20 }}
             label="Contraseña"
             name="contrasena"
-            type="contrasena"
+            type="password"
             value={formData.contrasena}
             onChange={handleFormChange}
             fullWidth
@@ -241,20 +245,6 @@ const Register = () => {
             error={!!validationErrors.contrasena}
             helperText={validationErrors.contrasena}
           />
-          {registrationSuccess && (
-          <Alert 
-          style={{
-            marginTop:'20px',
-          }}
-          severity="success">Registro exitoso</Alert>
-          )}
-          {registrationError && (
-          <Alert 
-          style={{
-            marginTop:'20px',
-          }}
-          severity="success">Error en el registro</Alert>
-          )}
           <Button
             onClick={handleSubmit}
             style={{ marginTop: 20, backgroundColor: "lightcoral" }}
@@ -262,24 +252,37 @@ const Register = () => {
             color="primary"
             type="submit"
           >
-            Registrase
+            Registrarse
           </Button>
-        </form>
-        <Button
-          variant="outlined"
-          onClick={() => navigate("/")}
-          style={{ 
-            marginTop: "16px",
-            color:'lightcoral',
-            borderColor:'lightcoral'
+      </form>
+      <Button
+        variant="outlined"
+        onClick={() => navigate("/")}
+        style={{ 
+          marginTop: "16px",
+          color:'lightcoral',
+          borderColor:'lightcoral'
+        }}
+      >
+        Volver al inicio
+      </Button>
+      {registrationSuccess && (
+        <Alert 
+        
+          style={{
+            marginTop:'20px',
           }}
-  
-        >
-          Volver al inicio
-        </Button>
-        <h1 style={{ marginBottom: 30 }}></h1>
-      </Container>
-    );
-  };
+          severity="success">Compra Exitosa!! Verifique su e-mail, Su numero de order es: 023984</Alert>
+      )}
+      {registrationError && (
+        <Alert 
+          style={{
+            marginTop:'20px',
+          }}
+          severity="error">Error en el registro</Alert>
+      )}
+    </Container>
+  );
+};
 
-export default Register
+export default Register;
