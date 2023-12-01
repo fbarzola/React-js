@@ -154,7 +154,6 @@ const Register = () => {
         navigate('/');
       }, 5000);
     } catch (error) {
-      console.error('Error al registrar:', error);
       setRegistrationError(true);
       setTimeout(() => {
         setRegistrationError(false);
