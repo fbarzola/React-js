@@ -79,8 +79,6 @@ const Contact = () => {
         nota: formData.nota,
       });
 
-      console.log("Documento creado con ID: ", docRef.id);
-
       
       setFormData({
         nombre: "",

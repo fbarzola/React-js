@@ -130,7 +130,7 @@ const Header = () => {
         
       })
       .catch((error) => {
-        console.error('Error al cerrar sesión: ', error);
+        setError('Error al cerrar sesión. Inténtalo de nuevo.');
       });
   };
 

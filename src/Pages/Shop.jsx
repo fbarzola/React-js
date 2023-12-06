@@ -18,7 +18,7 @@ const Shop = ({ cart, removeFromCart }) => {
   const getUserData = async () => {
     if (isUserLoggedIn) {
       try {
-        const userDocRef = doc(db, 'Usuarios', user.usuario);
+        const userDocRef = doc(db, 'Usuarios');
         const userDoc = await getDoc(userDocRef);
         return userDoc.data() || {};
       } catch (error) {
@@ -40,20 +40,18 @@ const Shop = ({ cart, removeFromCart }) => {
         const totalPrecio = cart.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
   
         const productosCompra = cart.map((item) => ({
-          name: item.product.Title || '',
-          quantity: item.quantity || 0,
-          price: (item.product.price * item.quantity).toFixed(2) || '0.00',
+          nombre: item.product.Title || '',
+          Cantidad: item.quantity || 0,
+          PrecioTotal: (item.product.price * item.quantity).toFixed(2) || '0.00',
         }));
   
         const purchaseDocRef = await addDoc(collection(db, 'Compras'), {
           nombre: userData.nombre || 'Nombre no disponible',
           apellido: userData.apellido || 'Apellido no disponible',
-          cantidad: cart.reduce((acc, item) => acc + item.quantity, 0),
           dni: userData.dni || 'DNI no disponible',
           usuario: userData.usuario || 'Usuario no disponible',
           email: userData.email || 'Email no disponible',
           fechaCompra: isoDate,
-          precioTotal: totalPrecio.toFixed(2),
           producto: productosCompra,
         });
   

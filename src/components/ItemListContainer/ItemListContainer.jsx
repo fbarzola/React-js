@@ -12,7 +12,6 @@ import Spinner from "../Spinner/Spinner";
 const ItemListContainer = ({ selectedCategory }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   
   const handleBuyClick = () => {
     

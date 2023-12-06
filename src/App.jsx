@@ -48,7 +48,6 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/producto/:category" element={<Producto />} />
-            {/* Nota: Puedes pasar removeFromCart directamente a Details en lugar de addToCart */}
             <Route path="/details/:productId" element={<Details removeFromCart={removeFromCart} />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/shop" element={<Shop cart={cart} removeFromCart={removeFromCart} />} />
