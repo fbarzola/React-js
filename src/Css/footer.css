@@ -1,0 +1,11 @@
+.footer {
+
+    display: 'flex';
+    justify-content: space-between; 
+    padding: '20px';
+    background: 'withe';
+ 
+
+}
+
+

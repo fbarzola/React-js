@@ -7,7 +7,7 @@ import Tabs from '../components/Tabs/Tabs';
 import { collection, query, where, getDocs, documentId } from 'firebase/firestore';
 import { db } from '../firebase/firebaseConfig';
 import Spinner from '../components/Spinner/Spinner';
-import './Details.css';
+import '../Css/Details.css';
 import Papers from '../components/Paper/Papers';
 import Button from '@mui/material/Button';
 

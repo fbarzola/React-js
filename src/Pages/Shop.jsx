@@ -22,7 +22,6 @@ const Shop = ({ cart, removeFromCart }) => {
         const userDoc = await getDoc(userDocRef);
         return userDoc.data() || {};
       } catch (error) {
-        console.error('Error al obtener datos del usuario: ', error);
         return {};
       }
     } else {

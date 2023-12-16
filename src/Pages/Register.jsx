@@ -70,20 +70,40 @@ const Register = () => {
       valid = false;
       newValidationErrors.email2 = 'Los correos electrónicos no coinciden';
     }
-
-    if (!/^\d{1,8}$/.test(formData.dni)) {
-      valid = false;
-      newValidationErrors.dni = 'DNI no válido';
-    }
-
+    
     if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
       valid = false;
       newValidationErrors.email = 'Email no válido';
     }
 
+     
+    if (!/^\d{7,8}$/.test(formData.dni)) {
+      valid = false;
+      newValidationErrors.dni = 'El DNI debe contener solo números y tener entre 7 y 8 dígitos.';
+    }
+  
     if (!/^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/.test(formData.birthDate)) {
       valid = false;
       newValidationErrors.birthDate = 'Fecha de nacimiento no válida (dd/mm/aaaa)';
+    }
+
+    if (!/^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/.test(formData.birthDate)) {
+      valid = false;
+      newValidationErrors.birthDate = 'Fecha de nacimiento no válida (dd/mm/aaaa)';
+    } else {
+  
+      const birthDate = new Date(formData.birthDate.split('/').reverse().join('-'));
+      const currentDate = new Date();
+      if (birthDate >= currentDate) {
+        valid = false;
+        newValidationErrors.birthDate = 'La fecha de nacimiento debe ser anterior a la fecha actual.';
+      }
+    }
+
+    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(formData.contrasena)) {
+      valid = false;
+      newValidationErrors.contrasena =
+        'La contraseña debe tener al menos 8 caracteres, una letra mayúscula, una letra minúscula, un número y un carácter especial.';
     }
 
     setValidationErrors(newValidationErrors);

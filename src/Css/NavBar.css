@@ -1,0 +1,29 @@
+.navbar {
+  position: static; 
+  
+  z-index: 1;
+  background-color: #dd6c6c !important;
+  text-decoration: none ;
+  Height: 55px !important;
+}
+
+.navbar-nav {
+  margin-left: 760px !important;
+  
+}
+
+.nav-item {
+  margin-right: 15px;
+  
+}
+
+.nav-link {
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.nav-link:hover {
+  color: #646cff;
+}

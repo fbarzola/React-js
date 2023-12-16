@@ -6,7 +6,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import img from "./Branding/3D_Store.png";
-import './header.css';
+import '../../Css/header.css';
 import { IconButton, Popover, Typography, TextField, Button, Alert } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles'; 
 import { Link } from 'react-router-dom';
@@ -119,7 +119,6 @@ const Header = () => {
     }
   };
   
-
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {

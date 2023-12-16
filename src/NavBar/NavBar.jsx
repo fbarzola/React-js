@@ -10,7 +10,7 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import CardWidget from '../components/CartWidget/CardWidget';
-import './NavBar.css';
+import '../Css/NavBar.css';
 
 const NavBar = ({ cartCount, updateCartCount }) => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);

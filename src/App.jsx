@@ -13,6 +13,8 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider, useAuth } from './components/Header/AuthContext';
 import { useCart } from './components/Paper/CartContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // PAGES
 import Home from "./Pages/Home";
